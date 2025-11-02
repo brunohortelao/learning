@@ -1,0 +1,71 @@
+// Rock, Paper, or Scissors game with a cheat code!
+
+
+// The computer makes a choice
+function getComputerChoice() {
+  const computerOption = Math.floor(Math.random() * 3);
+
+  return computerOption === 0 ? 'paper' : computerOption === 1 ? 'rock' : 'scissors';
+}
+
+// To determine the winner
+function determineWinner(userChoice, computerChoice) {
+  if (userChoice === computerChoice){
+    return 'It\'s a tie!';
+  } 
+
+  switch (userChoice) {
+    case 'rock':
+      if (computerChoice === 'paper') {
+        return 'Computer Wins!';
+      } else{
+        return 'Player Wins!'
+      }
+      break;
+    case 'paper':
+      if (computerChoice === 'scissors') {
+        return 'Computer Wins!';
+      } else{
+        return 'Player Wins!'
+      }
+      break;
+    case 'scissors':
+      if (computerChoice === 'rock') {
+        return 'Computer Wins!';
+      } else{
+        return 'Player Wins!'
+      }
+      break;
+    case 'bomb':
+      return 'SuperPOWAH, the Player Wins!'
+      break;
+    default:
+      break;
+  }
+}
+
+// The user should be able to choose rock, paper, or scissors when the game starts.
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if(userInput === 'rock' || userInput === 'scissors' || userInput ==='paper' || userInput === 'bomb') {
+    return userInput;
+  } else {
+    console.log('ERROR: Invalid choice!');
+  }
+}
+
+// To play the game
+function playGame() {
+  
+  const userChoice = getUserChoice('paper');
+  console.log(`Player chose ${userChoice}!`);
+  const computerChoice = getComputerChoice();
+  console.log(`Computer chose ${computerChoice}!`);
+
+  console.log(determineWinner(userChoice, computerChoice));
+
+}
+
+// Call the game
+playGame();
+
